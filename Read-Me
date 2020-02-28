@@ -1,0 +1,17 @@
+    -pas plus de 2 chiffres identiques côte à côte.
+    -2 lignes ou 2 colonnes ne peuvent être identiques.
+    -autant de 1 et de 0 sur chaque ligne et sur chaque colonne.
+             fonction verif lignes
+             fonction verif colonnes
+             fonction qui met les chiffres dans des listes
+             fonction verif si 3 chiffres identiques de suite
+             fonction verif si une liste colonne est identique à une autre.
+             fonction verif si une liste lignes est identique à une autre.
+             fonction 
+  
+    
+             
+    
+    
+    
+             
