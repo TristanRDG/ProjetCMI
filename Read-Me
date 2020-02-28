@@ -13,7 +13,7 @@
                Met le chiffre dans des tableau selon la case selectionné à la souris et le chiffre saisie dans la case.
                
              fonction (Identiques):
-               Verifie si il y'a 3 chiffres identiques de suite, empeche la victoire.
+               Verifie si il y'a 2 ou + chiffres identiques de suite ou plus, empeche la victoire.
              
              fonction (ColonnesIdentiques):
                Verifie si un tableau de chiffres colonne est identique à une autre, empeche la victoire.
@@ -21,7 +21,8 @@
              fonction (LignesIdentiques):
                Verifie si un tableau de chiffres ligne est identique à une autre, empeche la victoire.
              
-             fonction 
+             fonction (CasesVides): 
+               Si une case n'est pas remplie, empeche la victoire.
   
     
              
