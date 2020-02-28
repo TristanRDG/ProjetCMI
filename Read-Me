@@ -8,9 +8,6 @@
              
              fonction (colonnes):
                Boucle qui crée des colonnes sur l'interface.
-             
-             fonction (Tableau):
-               Met le chiffre dans des tableau selon la case selectionné à la souris et le chiffre saisie dans la case.
                
              fonction (Identiques):
                Verifie si il y'a 2 ou + chiffres identiques de suite ou plus, empeche la victoire.
@@ -23,6 +20,12 @@
              
              fonction (CasesVides): 
                Si une case n'est pas remplie, empeche la victoire.
+               
+              
+              
+              // Visuel
+               fonction (Tableau):
+               Met le chiffre dans des tableau selon la case selectionné à la souris et le chiffre saisie dans la case.
   
     
              
