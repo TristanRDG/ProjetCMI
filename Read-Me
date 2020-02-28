@@ -1,12 +1,26 @@
-    -pas plus de 2 chiffres identiques côte à côte.
+    -Pas plus de 2 chiffres identiques côte à côte.
     -2 lignes ou 2 colonnes ne peuvent être identiques.
-    -autant de 1 et de 0 sur chaque ligne et sur chaque colonne.
-             fonction verif lignes
-             fonction verif colonnes
-             fonction qui met les chiffres dans des listes
-             fonction verif si 3 chiffres identiques de suite
-             fonction verif si une liste colonne est identique à une autre.
-             fonction verif si une liste lignes est identique à une autre.
+    -Autant de 1 et de 0 sur chaque ligne et sur chaque colonne.
+    
+    
+             fonction (lignes):
+               Boucle qui crée des lignes sur l'interface.
+             
+             fonction (colonnes):
+               Boucle qui crée des colonnes sur l'interface.
+             
+             fonction (Tableau):
+               Met le chiffre dans des tableau selon la case selectionné à la souris et le chiffre saisie dans la case.
+               
+             fonction (Identiques):
+               Verifie si il y'a 3 chiffres identiques de suite, empeche la victoire.
+             
+             fonction (ColonnesIdentiques):
+               Verifie si un tableau de chiffres colonne est identique à une autre, empeche la victoire.
+               
+             fonction (LignesIdentiques):
+               Verifie si un tableau de chiffres ligne est identique à une autre, empeche la victoire.
+             
              fonction 
   
     
