@@ -10,7 +10,7 @@
                Boucle qui crée des colonnes sur l'interface
                
              fonction (Identiques): LÉDO
-               Verifie si il y'a plus de 2 chiffres identiques de suite, empêche la victoire
+               Si il y'a plus de 2 chiffres identiques de suite, empêche la victoire
              
              fonction (ColonnesIdentiques):YOUDNESS
                Verifie si un tableau de chiffres colonne est identique à une autre, empeche la victoire
@@ -19,7 +19,7 @@
                Verifie si un tableau de chiffres ligne est identique à une autre, empeche la victoire
              
              fonction (CasesVides): LÉDO
-               Si une case n'est pas remplie, empeche la victoire
+              Si une case n'est pas remplie, empeche la victoire
                
              fonction (Autant): TRIDSTAN
                Vérifie s'il y a le même nombre de 1 que de 0 sur chaque ligne et colonne
