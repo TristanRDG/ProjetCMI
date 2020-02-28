@@ -3,23 +3,29 @@
     -Autant de 1 et de 0 sur chaque ligne et sur chaque colonne.
     
     
-             fonction (lignes):
-               Boucle qui crée des lignes sur l'interface.
+             fonction (lignes):TRIDSTAN
+               Boucle qui crée des lignes sur l'interface
              
-             fonction (colonnes):
-               Boucle qui crée des colonnes sur l'interface.
+             fonction (colonnes):TRIDSTAN
+               Boucle qui crée des colonnes sur l'interface
                
-             fonction (Identiques):
-               Verifie si il y'a 2 ou + chiffres identiques de suite ou plus, empeche la victoire.
+             fonction (Identiques): LÉDO
+               Verifie si il y'a plus de 2 chiffres identiques de suite, empêche la victoire
              
-             fonction (ColonnesIdentiques):
-               Verifie si un tableau de chiffres colonne est identique à une autre, empeche la victoire.
+             fonction (ColonnesIdentiques):YOUDNESS
+               Verifie si un tableau de chiffres colonne est identique à une autre, empeche la victoire
                
-             fonction (LignesIdentiques):
-               Verifie si un tableau de chiffres ligne est identique à une autre, empeche la victoire.
+             fonction (LignesIdentiques):YOUDNESS
+               Verifie si un tableau de chiffres ligne est identique à une autre, empeche la victoire
              
-             fonction (CasesVides): 
-               Si une case n'est pas remplie, empeche la victoire.
+             fonction (CasesVides): LÉDO
+               Si une case n'est pas remplie, empeche la victoire
+               
+             fonction (Autant): TRIDSTAN
+               Vérifie s'il y a le même nombre de 1 que de 0 sur chaque ligne et colonne
+                
+             fonction (Victoire) : YOUDNESS
+               Vérifie si toutes les règles sont respectés
                
               
               
