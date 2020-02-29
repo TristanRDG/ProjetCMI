@@ -7,7 +7,7 @@ using namespace std;
         {0, 0, 1, 1},
         {1, 1, 0, 0},
         {1, 0, 1, 0},
-        {0, 1, 0, 1}
+        {1, 0, 0, 1}
     }  ;
 
     //          //
@@ -23,28 +23,30 @@ void printTab (){
 
 }
 
-bool autantDe01SurLigneColone (){  //Vérifie le nombre de 0 et de 1 du tableaux (autant de 1 et de 0 sur chaque ligne et sur chaque colonne = true, false sinon)
-    int NombreZero = 0;            //(PAS FONCTIONELLE)
+bool autantDe01SurColones (){  //Variante de la même  fonctions (FONCTIONELLE)
+    int NombreZero, NombreZeroPremiereLigne;
 
     for (int i = 0; i <= 3; i++){  
-        cout<<"ligne "<<i<<"\n"; //debug         
-        if (i>1 && NombreZero != 0){
-            cout<<"False";
+        //cout<<"ligne "<<i<<"\n"; //debug 
+        if (i==1){
+            NombreZeroPremiereLigne = NombreZero;
+        }
+        if (i>1 && NombreZero != NombreZeroPremiereLigne){
             break;
         }
-        NombreZero = -NombreZero;                     
+        NombreZero = 0;
         for (int j = 0; j <=3; j++){
-            if (Tableaux[i][j] == 0){
+            if (Tableaux[j][i] == 0){
                 NombreZero += 1;            
             }
-            cout<<"colone "<<j<<", Nombre de zero = "<<NombreZero<<"\n"; //debug
+            //cout<<"colone "<<j<<", Nombre de zero = "<<NombreZero<<"\n"; //debug
         }
     }
-    return true;
+    return NombreZeroPremiereLigne == NombreZero;
 }
 
 
-bool autantDe01SurLigneColoneVARIANTE (){  //Variante de la même  fonctions (FONCTIONELLE)
+bool autantDe01SurLignes (){  //Variante de la même  fonctions (FONCTIONELLE)
     int NombreZero, NombreZeroPremiereLigne;
 
     for (int i = 0; i <= 3; i++){  

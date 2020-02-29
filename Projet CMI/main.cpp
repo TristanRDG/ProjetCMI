@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
-    EVAL(autantDe01SurLigneColoneVARIANTE());
+    EVAL(autantDe01SurColones());
+    EVAL(autantDe01SurLignes());
     return 0;
 }
