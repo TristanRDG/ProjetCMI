@@ -5,10 +5,10 @@ using namespace std;
 // Tableaux //
 int Tableaux[4][4] =
     {
-    {0, 1, 0, 1},
     {1, 1, 0, 0},
-    {1, 0, 1, 0},
-    {1, 0, 0, 1}
+    {0, 0, 1, 1},
+    {0, 0, 1, 1},
+    {1, 1, 0, 1}
     } ;
 ////////////////////////////////////////////////////////////////////////
 
@@ -23,6 +23,24 @@ void printTab ()
             cout<<Tableaux[i][j]<<" ";
         }
     }
+}
+////////////////////////////////////////////////////////////////////////
+
+// Saisir Valeur Tableau //
+void saisirvaleur () 
+{
+    int valeur, i, j;
+
+    cout<<"Saisir valeur ligne : "; 
+    cin>>i;
+    cout<<"Saisir valeur colonne : ";
+    cin>>j;
+    cout<<"Saisir valeur 0 ou 1 : "; 
+    cin>>valeur;
+
+    Tableaux[i][j] = {valeur} ;
+
+    printTab();
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -53,10 +71,18 @@ int erreur=0;
         }
     }
 
-    if (erreur==0 || erreur==1)
-    cout<<"Vous avez fait "<<erreur<<" erreur";
+    if (erreur==0)
+        cout<<"VICTOIRE CHACAL"<< endl;
+    if (erreur==1)
+        cout<<"Vous avez fait "<<erreur<<" erreur"<< endl;
     else
-    cout<<"Vous avez fait "<<erreur<<" erreurs";
+        cout<<"Vous avez fait "<<erreur<<" erreurs"<< endl;
+    while (erreur!=0)
+    {
+        saisirvaleur();
+        max2cac();
+        break;
+    }
 }
 ////////////////////////////////////////////////////////////////////////
 
