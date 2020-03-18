@@ -6,7 +6,9 @@ using namespace std;
 
 int main()
 {
+    printTab();
     EVAL(autantDe01SurColones());
     EVAL(autantDe01SurLignes());
+    max2cac();
     return 0;
 }
