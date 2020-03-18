@@ -1,15 +1,1 @@
-// Saisir Valeur Tableau //
-void saisirvaleur () 
-{
-int i, j, valeur, Tableaux;
 
-    cout<<"Saisir valeur colonne : ";
-    cin>>i;
-    cout<<"Saisir valeur ligne : ";
-    cin>>j;
-    cout<<"Saisir valeur 0 ou 1 : ";
-    cin>>valeur;
-
-        int Tableaux[i][j] = {{valeur}} ;
-    printTab();
-}
