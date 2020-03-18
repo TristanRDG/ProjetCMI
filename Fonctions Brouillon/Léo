@@ -1,35 +1,15 @@
-// Pas plus de deux chiffres identiques côte à côte //
-//////////////////////////////////////////////////////
-
-void max2cac () 
+// Saisir Valeur Tableau //
+void saisirvaleur () 
 {
-int erreur=0;
+int i, j, valeur, Tableaux;
 
-    for (int i=0; i<4; i++)
-    {
-        for (int j=0; j<2; j++)
-        {
-            if (Tableaux[i][j] == Tableaux[i][j+1] && Tableaux[i][j+1] == Tableaux[i][j+2])
-            {
-                erreur++;
-            }  
-        }
-    }
-    
-    for (int j=0; j<4; j++)
-    {
-        for (int i=0; i<2; i++)
-        {
-            if (Tableaux[i][j] == Tableaux[i+1][j] && Tableaux[i+1][j] == Tableaux[i+2][j])
-            {
-                erreur++;
-            }  
-        }
-    }
+    cout<<"Saisir valeur colonne : ";
+    cin>>i;
+    cout<<"Saisir valeur ligne : ";
+    cin>>j;
+    cout<<"Saisir valeur 0 ou 1 : ";
+    cin>>valeur;
 
-    if (erreur==0 || erreur==1)
-    cout<<"Vous avez fait "<<erreur<<" erreur";
-    else
-    cout<<"Vous avez fait "<<erreur<<" erreurs";
+        int Tableaux[i][j] = {{valeur}} ;
+    printTab();
 }
-////////////////////////////////////////////////////////////////////////
