@@ -1,1 +1,7 @@
-Les Tableaux ont autant de colones que de lignes (4x4 ou 16x16).
+Règles :
+
+    Autant de 1 et de 0 sur chaque ligne et sur chaque colonne
+    Pas plus de 2 chiffres identiques côte à côte
+    2 lignes ou 2 colonnes ne peuvent être identiques
+        
+// Les Tableaux ont autant de colones que de lignes
