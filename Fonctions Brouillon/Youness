@@ -1,1 +1,61 @@
 
+bool lignesNonIdentiques (){
+
+	int resultat = 0;
+	
+
+	for (int i = 0; i <= 3; i++){  
+        
+        resultat = 0;
+        for (int j = 0; j <=3; j++){
+
+
+            if (Tableaux[i][j] != Tableaux[i+1][j])
+            {
+            	resultat = 0;
+
+            }
+            else
+            {
+                resultat+=1;
+            }
+            if (resultat==3)
+            {
+                return false;
+            }
+            
+        }
+    }
+    return true ;
+}
+
+
+bool coloneNonIdentiques (){
+
+    int resultat = 1;
+
+
+    for (int i = 0; i <= 3; i++){  
+        
+        
+        for (int j = 0; j <=3; j++){
+
+
+            if (Tableaux[j][i] != Tableaux[j+1][i])
+            {
+            	resultat=0;
+                          
+            }
+            else
+            {
+                resultat+=1;
+            }
+            if (resultat==3)
+            {
+                return false;
+            }
+            
+        }
+    }
+    return true ;
+}
