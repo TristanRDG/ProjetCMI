@@ -1,21 +1,21 @@
 #include <iostream>
 using namespace std;
 
-/////////////
+//////////////
 // Tableau //
-/////////////
+////////////
 
 int tableauTest[4][4] = 
 {
-    {0, 0, 0, 0},
-    {0, 0, 0, 0},
-    {0, 0, 0, 0},
-    {0, 0, 0, 0}
+    {0, 0, 1, 1},
+    {0, 0, 1, 1},
+    {1, 1, 0, 0},
+    {1, 1, 0, 0}
 } ;
 
-//////////////////////////////////////
+///////////////////////////////////////
 // Afficher tableau sur le terminal //
-//////////////////////////////////////
+/////////////////////////////////////
 
 void printTab () {
     
@@ -30,9 +30,9 @@ void printTab () {
     cout<<endl;
 }
 
-///////////////////////////
+////////////////////////////
 // Saisir Valeur Tableau //
-///////////////////////////
+//////////////////////////
 
 void saisirValeur () {
 int i, j, valeur;
@@ -45,116 +45,17 @@ int i, j, valeur;
     cin>>valeur;
 
     tableauTest[i][j] = {valeur} ;
+
+    printTab();
 }
 
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-// Autant de 1 et de 0 sur chaque lignes/colonnes //
-////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-
-void regle1() {
-int erreurR11(0), erreurR12(0);
-
-    for (int i=0; i<4; i++)
-    {
-        if (erreurR11 != 0)
-        {
-            break;
-        }
-        
-        erreurR11 = 0;                           //on réinnitialise 0 a chaque nouvelle ligne/colone
-        
-        for (int j=0; j<4; j++)
-        {
-            if (tableauTest[i][j] == 0)         //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
-            {
-                erreurR11++;               
-            }
-            
-            else 
-            {
-                erreurR11--;
-            }
-        }
-    }
-
-    for (int i=0; i<4; i++)
-    {
-        if (erreurR12 !=0)
-        {
-            break;
-        }
-
-        erreurR12 = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
-        
-        for (int j=0; j<4; j++)
-        {
-            if (tableauTest[j][i] == 0)
-            {
-                erreurR12++;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
-            }
-
-            else {
-                erreurR12--;
-            }
-        }
-    }
-
-    cout<<"Regle 1 : Autant de 1 et de 0 sur chaque lignes/colonnes"<<endl;
-
-    if (erreurR11==0 || erreurR12==0)
-        cout<<"Vous n'avez pas fait d'erreur"<<endl;
-    else
-        cout<<"Vous avez fait des erreurs"<<endl;
-}
-
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-// Pas plus de deux chiffres identiques côte à côte //
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-
-void regle2() {
-int erreurR2=0;
-
-    for (int i=0; i<4; i++)
-    {
-        for (int j=0; j<2; j++)
-        {
-            if (tableauTest[i][j] == tableauTest[i][j+1] && tableauTest[i][j+1] == tableauTest[i][j+2])
-            {
-                erreurR2++;
-            }  
-        }
-    }
-    
-    for (int j=0; j<4; j++)
-    {
-        for (int i=0; i<2; i++)
-        {
-            if (tableauTest[i][j] == tableauTest[i+1][j] && tableauTest[i+1][j] == tableauTest[i+2][j])
-            {
-                erreurR2++;
-            }  
-        }
-    }
-
-    cout<<"Regle 2 : Pas plus de deux chiffres cote a cote"<<endl;
-   
-    if (erreurR2==0 || erreurR2==1)
-        cout<<"Vous avez fait "<<erreurR2<<" erreur"<<endl;
-    else
-        cout<<"Vous avez fait "<<erreurR2<<" erreurs"<<endl;
-}
-
+///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// Deux lignes ou deux colonnes ne peuvent pas etre identiques //
 ////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-// Deux lignes ou deux colonnes ne peuvent pas etre identiques//
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-void regle3 (){
+bool regle3 (){
 int resultat(0), erreurR3(0);
 
     cout<<"Regle 3 : Deux lignes ou deux colonnes ne peuvent pas etre identiques"<<endl;
@@ -312,9 +213,140 @@ int resultat(0), erreurR3(0);
         }
     }
   
-    if (erreurR3==0 || erreurR3==1)
-        cout<<"Vous avez fait "<<erreurR3<<" erreur"<<endl;
-    else
-        cout<<"Vous avez fait "<<erreurR3<<" erreurs"<<endl;
+    if (erreurR3==0)
+    {
+        cout<<"Vous n'avez pas d'erreur"<<endl;
+        return true;
+    }
 
+    if (erreurR3==1)
+    {
+        cout<<"Vous avez fait "<<erreurR3<<" erreur"<<endl;
+        return false;
+    }
+
+    else
+    {
+        cout<<"Vous avez fait "<<erreurR3<<" erreurs"<<endl;
+        return false;
+    }
+
+}
+
+////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// Pas plus de deux chiffres identiques côte à côte //
+/////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+bool regle2() {
+int erreurR2=0;
+
+    for (int i=0; i<4; i++)
+    {
+        for (int j=0; j<2; j++)
+        {
+            if (tableauTest[i][j] == tableauTest[i][j+1] && tableauTest[i][j+1] == tableauTest[i][j+2])
+            {
+                erreurR2++;
+            }  
+        }
+    }
+    
+    for (int j=0; j<4; j++)
+    {
+        for (int i=0; i<2; i++)
+        {
+            if (tableauTest[i][j] == tableauTest[i+1][j] && tableauTest[i+1][j] == tableauTest[i+2][j])
+            {
+                erreurR2++;
+            }  
+        }
+    }
+
+    cout<<"Regle 2 : Pas plus de deux chiffres cote a cote"<<endl;
+   
+    if (erreurR2==0)
+    {
+        cout<<"Vous n'avez pas d'erreur"<<endl;
+        return true;
+    }
+
+    if (erreurR2==1)
+    {
+        cout<<"Vous avez fait "<<erreurR2<<" erreur"<<endl;
+        return false;
+    }
+
+    else
+    {
+        cout<<"Vous avez fait "<<erreurR2<<" erreurs"<<endl;
+        return false;
+    }
+}
+
+//////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+// Autant de 1 et de 0 sur chaque lignes/colonnes //
+///////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+bool regle1() {
+int erreurR11(0), erreurR12(0);
+
+    for (int i=0; i<4; i++)
+    {
+        if (erreurR11 != 0)
+        {
+            break;
+        }
+        
+        erreurR11 = 0;                           //on réinnitialise 0 a chaque nouvelle ligne/colone
+        
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[i][j] == 0)         //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
+            {
+                erreurR11++;               
+            }
+            
+            else 
+            {
+                erreurR11--;
+            }
+        }
+    }
+
+    for (int i=0; i<4; i++)
+    {
+        if (erreurR12 !=0)
+        {
+            break;
+        }
+
+        erreurR12 = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
+        
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[j][i] == 0)
+            {
+                erreurR12++;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
+            }
+
+            else {
+                erreurR12--;
+            }
+        }
+    }
+
+    cout<<endl<<"Regle 1 : Autant de 1 et de 0 sur chaque lignes/colonnes"<<endl;
+
+    if (erreurR11==0 || erreurR12==0)
+    {
+        cout<<"Vous n'avez pas d'erreur"<<endl;
+        return true;
+    }
+    else
+        cout<<"Vous avez fait des erreurs"<<endl;
+        return false;
 }
