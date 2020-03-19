@@ -1,35 +1,41 @@
 #include <iostream>
 using namespace std;
-////////////////////////////////////////////////////////////////////////
 
-// Tableaux //
-int Tableaux[4][4] =
-    {
-    {1, 1, 0, 0},
-    {0, 0, 1, 1},
-    {0, 0, 1, 1},
-    {1, 1, 0, 1}
-    } ;
-////////////////////////////////////////////////////////////////////////
+/////////////
+// Tableau //
+/////////////
 
-// Afficher tableau sur le terminal //
-void printTab ()
+int tableauTest[4][4] = 
 {
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0},
+    {0, 0, 0, 0}
+} ;
+
+//////////////////////////////////////
+// Afficher tableau sur le terminal //
+//////////////////////////////////////
+
+void printTab () {
+    
     for (int i = 0; i <= 3; i++)
     {
         cout<<"\n";
         for (int j = 0; j <=3; j++)
         {
-            cout<<Tableaux[i][j]<<" ";
+            cout<<tableauTest[i][j]<<" ";
         }
     }
+    cout<<endl;
 }
-////////////////////////////////////////////////////////////////////////
 
+///////////////////////////
 // Saisir Valeur Tableau //
-void saisirvaleur () 
-{
-    int valeur, i, j;
+///////////////////////////
+
+void saisirValeur () {
+int i, j, valeur;
 
     cout<<"Saisir valeur ligne : "; 
     cin>>i;
@@ -38,24 +44,87 @@ void saisirvaleur ()
     cout<<"Saisir valeur 0 ou 1 : "; 
     cin>>valeur;
 
-    Tableaux[i][j] = {valeur} ;
-
-    printTab();
+    tableauTest[i][j] = {valeur} ;
 }
-////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// Autant de 1 et de 0 sur chaque lignes/colonnes //
+////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+void regle1() {
+int erreurR11(0), erreurR12(0);
+
+    for (int i=0; i<4; i++)
+    {
+        if (erreurR11 != 0)
+        {
+            break;
+        }
+        
+        erreurR11 = 0;                           //on réinnitialise 0 a chaque nouvelle ligne/colone
+        
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[i][j] == 0)         //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
+            {
+                erreurR11++;               
+            }
+            
+            else 
+            {
+                erreurR11--;
+            }
+        }
+    }
+
+    for (int i=0; i<4; i++)
+    {
+        if (erreurR12 !=0)
+        {
+            break;
+        }
+
+        erreurR12 = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
+        
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[j][i] == 0)
+            {
+                erreurR12++;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
+            }
+
+            else {
+                erreurR12--;
+            }
+        }
+    }
+
+    cout<<"Regle 1 : Autant de 1 et de 0 sur chaque lignes/colonnes"<<endl;
+
+    if (erreurR11==0 || erreurR12==0)
+        cout<<"Vous n'avez pas fait d'erreur"<<endl;
+    else
+        cout<<"Vous avez fait des erreurs"<<endl;
+}
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 // Pas plus de deux chiffres identiques côte à côte //
-void max2cac () 
-{
-int erreur=0;
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+void regle2() {
+int erreurR2=0;
 
     for (int i=0; i<4; i++)
     {
         for (int j=0; j<2; j++)
         {
-            if (Tableaux[i][j] == Tableaux[i][j+1] && Tableaux[i][j+1] == Tableaux[i][j+2])
+            if (tableauTest[i][j] == tableauTest[i][j+1] && tableauTest[i][j+1] == tableauTest[i][j+2])
             {
-                erreur++;
+                erreurR2++;
             }  
         }
     }
@@ -64,71 +133,188 @@ int erreur=0;
     {
         for (int i=0; i<2; i++)
         {
-            if (Tableaux[i][j] == Tableaux[i+1][j] && Tableaux[i+1][j] == Tableaux[i+2][j])
+            if (tableauTest[i][j] == tableauTest[i+1][j] && tableauTest[i+1][j] == tableauTest[i+2][j])
             {
-                erreur++;
+                erreurR2++;
             }  
         }
     }
 
-    if (erreur==0)
-        cout<<"VICTOIRE CHACAL"<< endl;
-    if (erreur==1)
-        cout<<"Vous avez fait "<<erreur<<" erreur"<< endl;
+    cout<<"Regle 2 : Pas plus de deux chiffres cote a cote"<<endl;
+   
+    if (erreurR2==0 || erreurR2==1)
+        cout<<"Vous avez fait "<<erreurR2<<" erreur"<<endl;
     else
-        cout<<"Vous avez fait "<<erreur<<" erreurs"<< endl;
-    while (erreur!=0)
-    {
-        saisirvaleur();
-        max2cac();
-        break;
-    }
+        cout<<"Vous avez fait "<<erreurR2<<" erreurs"<<endl;
 }
-////////////////////////////////////////////////////////////////////////
 
-// Autant de 0 et de 1 sur les colonnes //
-bool autantDe01SurColones (){
-    int NombreZero, NombreZeroPremiereLigne;
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+// Deux lignes ou deux colonnes ne peuvent pas etre identiques//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
-    for (int i = 0; i <= 3; i++){  
-        //cout<<"ligne "<<i<<"\n"; //debug 
-        if (i==1){
-            NombreZeroPremiereLigne = NombreZero;
-        }
-        if (i>1 && NombreZero != NombreZeroPremiereLigne){
-            break;
-        }
-        NombreZero = 0;
-        for (int j = 0; j <=3; j++){
-            if (Tableaux[j][i] == 0){
-                NombreZero += 1;            
+void regle3 (){
+int resultat(0), erreurR3(0);
+
+    cout<<"Regle 3 : Deux lignes ou deux colonnes ne peuvent pas etre identiques"<<endl;
+	
+	for (int i=0; i<=3; i++)
+    {        
+        resultat = 0;
+
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[i][j] == tableauTest[i+1][j])
+            {
+            	resultat++;
             }
-            //cout<<"colone "<<j<<", Nombre de zero = "<<NombreZero<<"\n"; //debug
-        }
-    }
-    return NombreZeroPremiereLigne == NombreZero;
-}
-
-// Autant de 0 et de 1 sur les lignes //
-bool autantDe01SurLignes (){
-    int NombreZero, NombreZeroPremiereLigne;
-
-    for (int i = 0; i <= 3; i++){  
-        //cout<<"ligne "<<i<<"\n"; //debug 
-        if (i==1){
-            NombreZeroPremiereLigne = NombreZero;
-        }
-        if (i>1 && NombreZero != NombreZeroPremiereLigne){
-            break;
-        }
-        NombreZero = 0;
-        for (int j = 0; j <=3; j++){
-            if (Tableaux[i][j] == 0){
-                NombreZero += 1;            
+            
+            if (i==0 && resultat==4)
+            {
+                cout<<"Lignes 0 et 1 identiques"<<endl;
+                erreurR3++;
             }
-            //cout<<"colone "<<j<<", Nombre de zero = "<<NombreZero<<"\n"; //debug
+
+            if (i==1 && resultat==4)
+            {
+                cout<<"Lignes 1 et 2 identiques"<<endl;
+                erreurR3++;
+            }
+
+            if (i==2 && resultat==4)
+            {
+                cout<<"Lignes 2 et 3 identiques"<<endl;
+                erreurR3++;
+            }            
         }
     }
-    return NombreZeroPremiereLigne == NombreZero;
+
+    for (int i=0; i<=2; i++)
+    {        
+        resultat = 0;
+
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[i][j] == tableauTest[i+2][j])
+            {
+            	resultat++;
+            }
+            
+            if (i==0 && resultat==4)
+            {
+                cout<<"Lignes 0 et 2 identiques"<<endl;
+                erreurR3++;
+            }
+
+            if (i==1 && resultat==4)
+            {
+                cout<<"Lignes 1 et 3 identiques"<<endl;
+                erreurR3++;
+            }
+        }
+    }
+
+    for (int i=0; i<=1; i++)
+    {        
+        resultat = 0;
+
+        for (int j=0; j<4; j++)
+        {
+            if (tableauTest[i][j] == tableauTest[i+3][j])
+            {
+            	resultat++;
+            }
+            
+            if (i==0 && resultat==4)
+            {
+                cout<<"Lignes 0 et 3 identiques"<<endl;
+                erreurR3++;
+            }
+            
+        }
+    }
+
+    for (int j=0; j<=3; j++)
+    {        
+        resultat = 0;
+
+        for (int i=0; i<4; i++)
+        {
+            if (tableauTest[i][j] == tableauTest[i][j+1])
+            {
+            	resultat++;
+            }
+            
+            if (j==0 && resultat==4)
+            {
+                cout<<"Colonnes 0 et 1 identiques"<<endl;
+                erreurR3++;
+            }
+
+            if (j==1 && resultat==4)
+            {
+                cout<<"Colonnes 1 et 2 identiques"<<endl;
+                erreurR3++;
+            }
+            
+            if (j==2 && resultat==4)
+            {
+                cout<<"Colonnes 2 et 3 identiques"<<endl;
+                erreurR3++;
+            } 
+            
+        }
+    }
+
+    for (int j=0; j<=2; j++)
+    {        
+        resultat = 0;
+
+        for (int i=0; i<4; i++)
+        {
+            if (tableauTest[i][j] == tableauTest[i][j+2])
+            {
+            	resultat++;
+            }
+            
+            if (j==0 && resultat==4)
+            {
+                cout<<"Colonnes 0 et 2 identiques"<<endl;
+                erreurR3++;
+            }
+
+            if (j==1 && resultat==4)
+            {
+                cout<<"Colonnes 1 et 3 identiques"<<endl;
+                erreurR3++;
+            }
+            
+        }
+    }
+
+    for (int j=0; j<=1; j++)
+    {        
+        resultat = 0;
+
+        for (int i=0; i<4; i++)
+        {
+            if (tableauTest[i][j] == tableauTest[i][j+3])
+            {
+            	resultat++;
+            }
+            
+            if (j==0 && resultat==4)
+            {
+                cout<<"Colonnes 0 et 3 identiques"<<endl;
+                erreurR3++;
+            }   
+        }
+    }
+  
+    if (erreurR3==0 || erreurR3==1)
+        cout<<"Vous avez fait "<<erreurR3<<" erreur"<<endl;
+    else
+        cout<<"Vous avez fait "<<erreurR3<<" erreurs"<<endl;
+
 }
-////////////////////////////////////////////////////////////////////////
