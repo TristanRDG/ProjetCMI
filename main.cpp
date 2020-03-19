@@ -9,21 +9,29 @@ int main()
     cout<<endl;
     cout<<endl;
     cout<<"Debut de la partie :"<<endl;
+
     // choix taille tableau
     // création tableau semi-rempli
+
     printTab();
+    
     cout<<endl;
     cout<<"Attention ! La premiere ligne/colonne commence a 0"<<endl<<endl;
-    //while(erreurR1!=0 && erreurR2!=0 && erreurR3!=0)
-    //{
-        saisirValeur();
-        printTab();
+
+    saisirValeur();
+    
+    while(regle1()!=true || regle2()!=true || regle3()!=true)
+    {
         regle1();
+        cout<<endl;
         regle2();
+        cout<<endl;
         regle3();
-        //break;
-    //}
-    cout<<"VICTOOOOOOOOOIRE CHACAL ! BIEN OUEJ !"<<endl;
+        cout<<endl;
+        saisirValeur();
+    }
+
+    cout<<endl<<"VICTOOOOOOOOOIRE ! BIEN JOUE !"<<endl;
     system("pause");
     return 0;
 }
