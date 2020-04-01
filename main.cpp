@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 #include "fonctions.cpp"
+#include "regles.cpp"
 #define EVAL(exp) cout << "Valeur de " << (#exp) <<" : "<< (exp) << endl
-
 
 int main()
 {
@@ -22,13 +22,8 @@ int main()
     
     while(regle1()!=true || regle2()!=true || regle3()!=true)
     {
-        regle1();
-        cout<<endl;
-        regle2();
-        cout<<endl;
-        regle3();
-        cout<<endl;
-        saisirValeur();
+       printTab();
+       saisirValeur();
     }
 
     cout<<endl<<"VICTOOOOOOOOOIRE ! BIEN JOUE !"<<endl;
