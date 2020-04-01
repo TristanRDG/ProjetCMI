@@ -46,5 +46,4 @@ int i, j, valeur;
 
     tableauTest[i][j] = {valeur} ;
 
-    printTab();
 }
