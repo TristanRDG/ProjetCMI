@@ -1,55 +1,37 @@
-void regle1() {
-int erreurR11(0), erreurR12(0);
-
-    for (int i=0; i<4; i++)
-    {
-        if (erreurR11 != 0)
-        {
+bool autant01LIGNE2 (int** AdresseTableau, int DefTaille){
+    int compteur = 0;
+    for (int i=0; i<DefTaille; i++){
+        if (compteur !=0){
             break;
         }
-        
-        erreurR11 = 0;                           //on réinnitialise 0 a chaque nouvelle ligne/colone
-        
-        for (int j=0; j<4; j++)
-        {
-            if (tableauTest[i][j] == 0)         //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
-            {
-                erreurR11++;               
+        compteur = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
+        for (int j=0; j<DefTaille; j++){
+            if (AdresseTableau[i][j] == 0){
+                compteur +=1;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
             }
-            
-            else 
-            {
-                erreurR11--;
-            }
-        }
-    }
-
-    for (int i=0; i<4; i++)
-    {
-        if (erreurR12 !=0)
-        {
-            break;
-        }
-
-        erreurR12 = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
-        
-        for (int j=0; j<4; j++)
-        {
-            if (tableauTest[j][i] == 0)
-            {
-                erreurR12++;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
-            }
-
             else {
-                erreurR12--;
+                compteur -=1;
             }
         }
     }
+    return compteur == 0;
+}
 
-    cout<<"Regle 1 : Autant de 1 et de 0 sur chaque lignes/colonnes"<<endl;
-
-    if (erreurR11==0 || erreurR12==0)
-        cout<<"Vous n'avez pas fait d'erreur"<<endl;
-    else
-        cout<<"Vous avez fait des erreurs"<<endl;
+bool autant01COLLONE2 (int** AdresseTableau, int DefTaille){
+    int compteur = 0;
+    for (int i=0; i<DefTaille; i++){
+        if (compteur !=0){
+            break;
+        }
+        compteur = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
+        for (int j=0; j<DefTaille; j++){
+            if (AdresseTableau[j][i] == 0){
+                compteur +=1;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
+            }
+            else {
+                compteur -=1;
+            }
+        }
+    }
+    return compteur == 0;
 }
