@@ -3,12 +3,6 @@
 #include <time.h>   ///fonction random///
 using namespace std;
 
-                                                        /*
-                                                            Dans MAIN : 
-                                                                tailleTab(&DefTaille);  -> définire la taille du tableaux
-                                                                remplisTableaux(creaTableaux(DefTaille), DefTaille);  -> crée et affiche le tableaux
-                                                        */
-
 int tailleTab (int *DefTaille){
 
     cout<<"pour un tableaux en 4x4 taper 1,"<<"\n"<<"Pour un tableaux en 6x6 taper 2."<<"\n"; //TEMPORAIRE, Demande a l'uttilisateur la taille du tableaux qu'il souhaite
@@ -112,3 +106,19 @@ void remplisTableau (int** AdresseTableau, int DefTaille){
     printTab(AdresseTableau, DefTaille);  //print le tableaux
 }
 
+
+////////////////////
+
+void saisirValeur (int** AdresseTableau, int DefTaille) {
+int i, j, valeur;
+
+    cout<<"Saisir valeur ligne : "; 
+    cin>>i;
+    cout<<"Saisir valeur colonne : ";
+    cin>>j;
+    cout<<"Saisir valeur 0 ou 1 : "; 
+    cin>>valeur;
+
+    AdresseTableau[i][j] = {valeur} ;
+
+}
