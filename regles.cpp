@@ -7,7 +7,7 @@ using namespace std;
 /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
-bool autant01LIGNE2 (int** AdresseTableau, int DefTaille){
+bool regle1_1 (int** AdresseTableau, int DefTaille){  //lignes
     int compteur = 0;
     for (int i=0; i<DefTaille; i++){
         if (compteur !=0){
@@ -15,8 +15,9 @@ bool autant01LIGNE2 (int** AdresseTableau, int DefTaille){
         }
         compteur = 0;                       // on réinnitialise 0 a chaque nouvelle ligne/colone
         for (int j=0; j<DefTaille; j++){
-            if (AdresseTableau[i][j] == 0){
-                compteur +=1;               // compteur prend +1 pour chaque 0       // compteur prend -1 pour chaque 1
+            //cout<<AdresseTableau[i][j]<<"\n";                          //!
+            if (AdresseTableau[i][j] == 1){
+                compteur +=1;               // compteur prend + 1 pour chaque 1 et -1 pour chaque 0
             }
             else {
                 compteur -=1;
@@ -26,16 +27,16 @@ bool autant01LIGNE2 (int** AdresseTableau, int DefTaille){
     return compteur == 0;
 }
 
-bool autant01COLLONE2 (int** AdresseTableau, int DefTaille){
+bool regle1_2 (int** AdresseTableau, int DefTaille){  //colones
     int compteur = 0;
     for (int i=0; i<DefTaille; i++){
         if (compteur !=0){
             break;
         }
-        compteur = 0;                       //on réinnitialise 0 a chaque nouvelle ligne/colone
+        compteur = 0;                       // on réinnitialise 0 a chaque nouvelle ligne/colone
         for (int j=0; j<DefTaille; j++){
-            if (AdresseTableau[j][i] == 0){
-                compteur +=1;               //compteur prend + 1 pour chaque 0 et -1 pour chaque 1
+            if (AdresseTableau[j][i] == 1){
+                compteur +=1;               // compteur prend + 1 pour chaque 1 et -1 pour chaque 0
             }
             else {
                 compteur -=1;
@@ -86,9 +87,7 @@ bool regle2(int** AdresseTableau, int DefTaille) {
 
 bool regle3 (int** AdresseTableau, int DefTaille){
 
-    int erreur3 = 0;
-
-    for (int i = 0; i  <= DefTaille-2; i++){           ///Lignes/// j < (4*4 - ((i+1)*4))-1///
+    for (int i = 0; i  <= DefTaille-2; i++){           ///Lignes///
         cout<<"i = "<<i<<"\n";
 
         for (int j = i+1; j <= DefTaille-1; j++){

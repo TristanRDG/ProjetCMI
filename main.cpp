@@ -1,32 +1,38 @@
-#include <iostream>
+#include <iostream> 
 using namespace std;
-#include "fonctions.cpp"
-#include "regles.cpp"
+#include "Fonctions/regles.cpp" 
+#include "Fonctions/Tableau.cpp"
 #define EVAL(exp) cout << "Valeur de " << (#exp) <<" : "<< (exp) << endl
+
+
 
 int main()
 {
-    cout<<endl;
-    cout<<endl;
-    cout<<"Debut de la partie :"<<endl;
+//      ||VARIABLE GLOBAL||      //
+    int** AdresseTableau;  //Pointeur vers l'adresse du tableaux (premierre valeur) || Pointeur de pointeur !!!
+    int  DefTaille;  //Taille du tableaux 
+//      ||VARIABLE GLOBAL||      //
 
-    // choix taille tableau
-    // création tableau semi-rempli
+    tailleTab(&DefTaille);
+    AdresseTableau = creaTableaux(DefTaille);
+    remplisTableau(AdresseTableau, DefTaille);
 
-    printTab();
+    //TEST SI LE TABLEAUX EST JUSTE
+
+    //EVAL(regle1_1 (AdresseTableau, DefTaille));
+    //EVAL(regle1_2 (AdresseTableau, DefTaille));
+    //EVAL(regle2(AdresseTableau, DefTaille));
+    //EVAL(regle3 (AdresseTableau, DefTaille));
     
-    cout<<endl;
-    cout<<"Attention ! La premiere ligne/colonne commence a 0"<<endl<<endl;
+    //SUPRESION  DU TABLEAUX DE LA MEMOIRE
 
-    saisirValeur();
-    
-    while(regle1()!=true || regle2()!=true || regle3()!=true)
-    {
-       printTab();
-       saisirValeur();
+    for (int k=0; k<=DefTaille; k++){         
+        delete [] AdresseTableau[k];
     }
+    delete []  AdresseTableau;
+    
+/////////////////////////////////////////////////
 
-    cout<<endl<<"VICTOOOOOOOOOIRE ! BIEN JOUE !"<<endl;
-    system("pause");
+    //system("pause");
     return 0;
 }

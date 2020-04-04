@@ -2,7 +2,6 @@
 #include <stdlib.h>  ///fonction random///
 #include <time.h>   ///fonction random///
 using namespace std;
-int  DefTaille;  //Taille du tableaux ||VARIABLE GLOBAL||
 
                                                         /*
                                                             Dans MAIN : 
@@ -35,8 +34,6 @@ int** creaTableaux (int DefTaille){
     
     int** AdresseTableau;  //Pointeur vers l'adresse du tableaux (premierre valeur) || Pointeur de pointeur !!!
 
-
-
     AdresseTableau = new int *[DefTaille];    // AdresseTableau = pointeur vers la mémoire du tableau ||| *DefTaille =  nombres  de pointeurs qui renvoye vers un tableaux 
    
     for (int i = 0; i<DefTaille; i++){          // Boucle qui créé le tableau en deux dimension   
@@ -60,15 +57,11 @@ void printTab  (int** AdresseTableau, int DefTaille){
             //*(*(AdresseTableau + i) + j)<<" "
         }
     }
-    for (int k=0; k<=DefTaille; k++){         //supresion du  tableau de la mémoire
-        delete [] AdresseTableau[k];
-    }
-    delete []  AdresseTableau;
 }
 
 //////////////////////////////////////
 
-void remplisTableaux (int** AdresseTableau, int DefTaille){
+void remplisTableau (int** AdresseTableau, int DefTaille){
     int compteur;
     srand (time(NULL));
 
@@ -98,17 +91,24 @@ void remplisTableaux (int** AdresseTableau, int DefTaille){
             else{
                 if (compteur == 0){
                     AdresseTableau[i][j] = rand() %2;
+                    if (AdresseTableau[i][j] = 1){
+                        compteur +=1;
+                    }
+                    else{
+                        compteur-=1;
+                    }
                 }
                 else if (compteur > 0){
                     AdresseTableau[i][j] = 0;
+                    compteur -=1;
                 }
                 else{
                     AdresseTableau[i][j] = 1;
+                    compteur +=1;
                 }
             }
         }
     }
-
     printTab(AdresseTableau, DefTaille);  //print le tableaux
 }
 
