@@ -5,20 +5,15 @@ using namespace std;
 
 int tailleTab (int *DefTaille){
 
-    cout<<"pour un tableaux en 4x4 taper 1,"<<"\n"<<"Pour un tableaux en 6x6 taper 2."<<"\n"; //TEMPORAIRE, Demande a l'uttilisateur la taille du tableaux qu'il souhaite
+    cout<<"Choisir la taille du tableau, au moins 4"<<"\n";
     cin>>*DefTaille;
-    while (*DefTaille >2 || *DefTaille < 1){  //Vérifie la réponse de l'utilisateur
-        cout<<"Valeurs éronné recomencer "<<"\n"; 
+
+    while (*DefTaille < 4){  // Vérifie que l'utilisateur ait au moins un tableau 4*4
+        cout<<"Valeur trop faible"<<"\n"; 
         cin>>*DefTaille;
 
     }
-    if (*DefTaille == 1){   //en fonction de la réponse de l'utilisateur DefTaille prend la valeurs choisis
-        *DefTaille = 4;
-    }
-    else {
-        *DefTaille = 6;
-    }
-
+   
     return *DefTaille;
 }
 
