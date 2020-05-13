@@ -11,10 +11,10 @@ using namespace std;
 
 int tailleTab (int *DefTaille){
 
-    cout<<"Choisir la taille du tableau, au moins 4, et pair."<<"\n";
+    cout<<"Choisir la taille du tableau pair, entre 4 et 16."<<"\n";
     cin>>*DefTaille;
 
-    while (*DefTaille < 4 || *DefTaille % 2 != 0){  // Vérifie que l'utilisateur ait au moins un tableau 4*4
+    while (*DefTaille < 4 || *DefTaille > 16 || *DefTaille % 2 != 0){  // Vérifie que l'utilisateur ait au moins un tableau 4*4
         cout<<"Valeur éronné"<<"\n"; 
         cin>>*DefTaille;
 
