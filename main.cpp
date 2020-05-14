@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
-
-#include "C:\Users\leo31\Documents\ProjetCMI\regles.cpp"
-#include "C:\Users\leo31\Documents\ProjetCMI\tableau.cpp"
+#include "C:\Users\leo31\Documents\ProjetCMI\fonctions.cpp"
 
 #define EVAL(exp) cout << "Valeur de " << (#exp) <<" : "<< (exp) << endl
 
@@ -11,15 +9,17 @@ int main() {
     cout<<endl;
     cout<<endl;
     cout<<"Debut de la partie :"<<endl;
-
+    
 
     int** AdresseTableau;  // Pointeur vers l'adresse du tableaux (premierre valeur) || Pointeur de pointeur
     int  DefTaille;  // Taille du tableau
 
-
     tailleTab(&DefTaille);
     AdresseTableau = creaTableaux(DefTaille);
     remplisTableau(AdresseTableau, DefTaille);
+    remplisTableauVide(AdresseTableau, DefTaille);
+    printTab(AdresseTableau, DefTaille);
+
 
     cout<<endl<<endl;
     cout<<"Attention ! La premiere ligne/colonne commence a 0, la deuxieme a 1 etc..."<<endl<<endl;
@@ -40,7 +40,7 @@ int main() {
         }
         delete []  AdresseTableau;
     //////////////////////////////////////
-    
+
     system("pause");
     return 0;
 }
