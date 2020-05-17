@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "C:\Users\leo31\Documents\ProjetCMI\fonctions.cpp"
+#include "C:\Users\leo31\Documents\ProjetCMI\fonctions.cpp" //A changer avec le bon path
 
 using namespace std;
 #define EVAL(exp) cout << "Valeur de " << (#exp) <<" : "<< (exp) << endl
