@@ -173,15 +173,24 @@ void couleur(int couleurDuTexte,int couleurDeFond)
 int tailleTab (int *DefTaille) {
 
     cout<<"Choisir la taille du tableau pair, entre 4 et 16."<<"\n";
+    cout<<"A partir de 6, le temps de chargement peut etre tres tres long"<<"\n";
     cin>>*DefTaille;
 
-    while (*DefTaille < 4 || *DefTaille > 16 || *DefTaille % 2 != 0){  // Vérifie que l'utilisateur ait au moins un tableau 4*4
-        cout<<"Valeur éronné"<<"\n"; 
+   /* while (*DefTaille < 4 || *DefTaille > 16 || *DefTaille % 2 != 0){  // Vérifie que l'utilisateur ait au moins un tableau 4*4
+        cout<<"Nonon, re-essayez !"<<endl; 
+        cin>>*DefTaille;
+
+    }*/
+
+    while(*DefTaille < 4 || *DefTaille > 16 || *DefTaille % 2 != 0)
+    {
+        cout<<"Nonon, re-essayez !"<<endl;
         cin>>*DefTaille;
 
     }
-   
+
     return *DefTaille;
+
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -266,21 +275,21 @@ void remplisTableau (int** AdresseTableau, int DefTaille) {
             {
                 int nombre = rand();
 
-                if(nombre<16383)
+                if(nombre & 1)
                 {
-                    AdresseTableau[i][j] = 0; 
+                    AdresseTableau[i][j] = 1; 
                 }
 
                 else 
                 {
-                    AdresseTableau[i][j] = 1;
+                    AdresseTableau[i][j] = 0;
                 }
             }
         }
     }
 }
 
-void remplisTableauVide (int** AdresseTableau, int DefTaille) { //remplace par 9 tt les nombres randoms impaires
+void remplisTableauVide (int** AdresseTableau, int DefTaille) { //remplace par 7 tt les nombres randoms impaires
 
     srand(time(NULL));
 
@@ -289,9 +298,9 @@ void remplisTableauVide (int** AdresseTableau, int DefTaille) { //remplace par 9
         for (int j = 0; j<DefTaille; j++)
         {
             int nombre = rand();
-            if(nombre & 1)
+            if(nombre>16383)
             {
-                AdresseTableau[i][j] = 9; 
+                AdresseTableau[i][j] = 7; 
             }
         }
     }
@@ -310,16 +319,39 @@ int i, j, valeur;
     cout<<"Saisir valeur colonne : ";
     cin>>j;
 
-    if(AdresseTableau[i][j] == 9)
+    if(AdresseTableau[i][j] != 0 && AdresseTableau[i][j] != 1)
     {
-        cout<<"Saisir valeur 0 ou 1 : "; 
+        cout<<"Saisir valeur : "; 
         cin>>valeur;
+        cout<<endl<<endl;
         AdresseTableau[i][j] = {valeur} ;
     }
 
     else 
     {
+        cout<<endl;
         cout<<"Vous ne pouvez pas modifier cette casse"<<endl;
+        cout<<endl<<endl;
     }
 
+}
+
+///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+void verif (int** AdresseTableau, int DefTaille) {
+    for (int i = 0; i <DefTaille; i++)
+    {
+        for (int j = 0; j <DefTaille; j++)
+        {
+            if(AdresseTableau[i][j] != 0 && AdresseTableau[i][j] != 1)
+            {
+                saisirValeur(AdresseTableau, DefTaille);
+                printTab(AdresseTableau, DefTaille);
+                cout<<endl<<endl;
+            }
+        }
+    }
 }
